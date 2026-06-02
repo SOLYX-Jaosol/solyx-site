@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SOLYX CORPORATE IDENTITY SYSTEM V6.1 (Refined Aligned Architecture)
+   SOLYX CORPORATE IDENTITY SYSTEM V7 (Perfect Alignment & Scale Architecture)
    ========================================================================== */
 
 :root {
@@ -48,10 +48,10 @@ body {
 }
 
 /* ==========================================================================
-   HEADER & LOGO - CORREÇÃO DE ALINHAMENTO E CORTE
+   HEADER & LOGO REBUILT (Fluxo Preservado e Alinhamento Preciso)
    ========================================================================== */
 .main-header {
-    padding: 12px 0 !important;
+    padding: 8px 0 !important; /* Ajuste sutil de padding */
     border-bottom: 1px solid var(--border-subtle);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -65,33 +65,33 @@ body {
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
-    height: 60px !important;
+    height: 64px !important;
 }
 
-/* Container ajustado para dar folga ao asset e evitar o corte lateral */
+/* Mantém o container no fluxo normal do grid interno da página */
 .logo-area {
     display: flex !important;
     align-items: center !important;
-    width: 200px !important; 
-    height: 50px !important;
+    width: 220px !important; 
+    height: 54px !important;
     position: relative !important;
 }
 
 .brand-logo {
-    position: absolute !important;
-    left: -12px !important; /* Afastado da borda para não cortar e alinhar com o grid */
-    width: 320px !important; 
-    max-width: none !important;
+    position: relative !important;
+    width: 155px !important; /* Controla o tamanho exato da logo na barra */
     height: auto !important;
     display: block !important;
-    transform: scale(1.6) !important; 
+    object-fit: contain !important;
+    transform: scale(1.5) !important; /* Escala perfeita sem deformação */
     transform-origin: left center !important;
+    margin-left: 6px; /* Deslocamento cirúrgico para não cortar a ponta do S */
     filter: drop-shadow(0px 0px 8px rgba(0, 191, 255, 0.35)) !important;
     transition: var(--transition-premium);
 }
 
 .brand-logo:hover {
-    transform: scale(1.63) !important;
+    transform: scale(1.53) !important;
     filter: drop-shadow(0px 0px 14px rgba(0, 191, 255, 0.55)) !important;
 }
 
@@ -508,7 +508,7 @@ input:focus {
 
 @media (max-width: 640px) {
     .logo-area { transform: scale(0.75) !important; width: 130px !important; }
-    .brand-logo { left: -5px !important; }
+    .brand-logo { margin-left: 2px !important; }
     .hero-title { font-size: 2.35rem; }
     .hero-cta-group { flex-direction: column; width: 100%; }
     .btn { width: 100%; }
