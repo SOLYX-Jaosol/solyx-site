@@ -1,1 +1,53 @@
-console.log("solyx");
+const SUPABASE_URL = 'https://seu-projeto.supabase.co';
+const SUPABASE_ANON_KEY = 'sua-chave-anon-publica';
+
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+document.getElementById('leadForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const btnSubmit = document.getElementById('btnSubmit');
+    const feedback = document.getElementById('formFeedback');
+    
+    btnSubmit.disabled = true;
+    btnSubmit.innerText = 'Verificando credenciais de exclusividade...';
+    
+    const nome = document.getElementById('nome').value.trim();
+    const whatsapp = document.getElementById('whatsapp').value.trim();
+    const city = document.getElementById('cidade').value.trim();
+    const profession = document.getElementById('profissao').value.trim();
+
+    try {
+        const { data, error } = await supabase
+            .from('PROFISSIONAIS')
+            .insert([
+                { 
+                    nome: nome, 
+                    telefone: whatsapp, 
+                    cidade: city, 
+                    categoria: profession
+                }
+            ]);
+
+        if (error) throw error;
+
+        feedback.classList.remove('hidden', 'error');
+        feedback.classList.add('success');
+        feedback.innerHTML = '✓ <strong>Solicitação enviada com sucesso!</strong><br>Sua candidatura foi registrada na lista de espera prioritária da fase beta controlada.';
+        
+        document.getElementById('leadForm').reset();
+        btnSubmit.innerText = 'Solicitação Registrada';
+        
+    } catch (error) {
+        console.error('Erro de Processamento Supabase:', error.message);
+        feedback.classList.remove('hidden', 'success');
+        feedback.classList.add('error');
+        feedback.style.background = 'rgba(255, 77, 77, 0.1)';
+        feedback.style.color = '#FF4D4D';
+        feedback.style.border = '1px solid rgba(255, 77, 77, 0.2)';
+        feedback.innerText = 'Ocorreu um erro técnico na conexão. Por favor, revise seus dados ou tente novamente.';
+        
+        btnSubmit.disabled = false;
+        btnSubmit.innerText = 'Solicitar Acesso à Lista Premium';
+    }
+});
