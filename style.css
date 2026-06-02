@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SOLYX CORPORATE IDENTITY SYSTEM V6 (Anti-Vazio Transparente)
+   SOLYX CORPORATE IDENTITY SYSTEM V6.1 (Refined Aligned Architecture)
    ========================================================================== */
 
 :root {
@@ -48,7 +48,7 @@ body {
 }
 
 /* ==========================================================================
-   HEADER & LOGO - REFINAMENTO DE ALINHAMENTO FINO (style.css)
+   HEADER & LOGO - CORREÇÃO DE ALINHAMENTO E CORTE
    ========================================================================== */
 .main-header {
     padding: 12px 0 !important;
@@ -68,18 +68,18 @@ body {
     height: 60px !important;
 }
 
-/* Container ajustado para não cortar as bordas do símbolo */
+/* Container ajustado para dar folga ao asset e evitar o corte lateral */
 .logo-area {
     display: flex !important;
     align-items: center !important;
-    width: 200px !important; /* Aumentado ligeiramente para dar margem interna ao asset */
+    width: 200px !important; 
     height: 50px !important;
     position: relative !important;
 }
 
 .brand-logo {
     position: absolute !important;
-    left: -12px !important; /* Ajustado de -30px para -12px: afasta da borda e alinha com o texto */
+    left: -12px !important; /* Afastado da borda para não cortar e alinhar com o grid */
     width: 320px !important; 
     max-width: none !important;
     height: auto !important;
@@ -92,30 +92,6 @@ body {
 
 .brand-logo:hover {
     transform: scale(1.63) !important;
-    filter: drop-shadow(0px 0px 14px rgba(0, 191, 255, 0.55)) !important;
-}
-
-.badge-dev {
-    background: rgba(0, 191, 255, 0.08);
-    border: 1px solid rgba(0, 191, 255, 0.25);
-    color: var(--brand-blue);
-    padding: 6px 14px;
-    border-radius: 99px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-}
-
-/* Responsividade da Logo no Mobile */
-@media (max-width: 640px) {
-    .logo-area { transform: scale(0.75) !important; width: 130px !important; }
-    .brand-logo { left: -5px !important; } /* Ajuste fino para telas pequenas */
-}
-}
-
-.brand-logo:hover {
-    transform: scale(1.65) !important;
     filter: drop-shadow(0px 0px 14px rgba(0, 191, 255, 0.55)) !important;
 }
 
@@ -531,7 +507,8 @@ input:focus {
 }
 
 @media (max-width: 640px) {
-    .logo-area { transform: scale(0.7) !important; width: 110px !important; }
+    .logo-area { transform: scale(0.75) !important; width: 130px !important; }
+    .brand-logo { left: -5px !important; }
     .hero-title { font-size: 2.35rem; }
     .hero-cta-group { flex-direction: column; width: 100%; }
     .btn { width: 100%; }
