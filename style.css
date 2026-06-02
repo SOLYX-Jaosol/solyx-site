@@ -47,15 +47,16 @@ body {
     padding: 0 32px;
 }
 
-/* Header */
+/* Header Ajustado para Destacar a Logo */
 .main-header {
-    padding: 28px 0;
+    padding: 24px 0;
     border-bottom: 1px solid var(--border-subtle);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     position: sticky;
     top: 0;
     z-index: 100;
+    background: rgba(5, 11, 28, 0.7);
 }
 
 .header-wrapper {
@@ -64,9 +65,23 @@ body {
     align-items: center;
 }
 
+.logo-link {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+}
+
 .brand-logo {
-    height: 36px;
+    height: 52px; /* Tamanho corrigido com base no print image_3a2604.jpg */
+    width: auto;
     object-fit: contain;
+    filter: drop-shadow(0px 0px 8px rgba(0, 191, 255, 0.2));
+    transition: var(--transition-premium);
+}
+
+.brand-logo:hover {
+    transform: scale(1.02);
+    filter: drop-shadow(0px 0px 12px rgba(0, 191, 255, 0.4));
 }
 
 .badge-dev {
@@ -457,7 +472,7 @@ input:focus {
 }
 
 /* ==========================================================================
-   RESPONSIVIDADE INTELIGENTE (Escala o mockup em vez de esconder)
+   RESPONSIVIDADE INTELIGENTE (Não esconde o mockup, reduz com transform: scale)
    ========================================================================== */
 @media (max-width: 1024px) {
     .hero-grid {
@@ -470,7 +485,6 @@ input:focus {
     .hero-cta-group { justify-content: center; }
     .features-grid { grid-template-columns: 1fr; gap: 20px; }
     
-    /* Resolução do problema mobile: Escala controlada */
     .hero-mockup-container {
         transform: scale(0.85);
         height: 340px;
@@ -485,7 +499,8 @@ input:focus {
     .hero-title { font-size: 2.35rem; }
     .hero-cta-group { flex-direction: column; width: 100%; }
     .btn { width: 100%; }
-    .hero-mockup-container { transform: scale(0.7); height: 280px; }
+    .hero-mockup-container { transform: scale(0.75); height: 280px; }
     .input-row { grid-template-columns: 1fr; gap: 0; }
     .solyx-form { padding: 24px; }
+    .brand-logo { height: 42px; } /* Ajuste fino para telas pequenas */
 }
