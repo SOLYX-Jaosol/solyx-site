@@ -1,504 +1,57 @@
-/* ==========================================================================
-   SOLYX CORPORATE IDENTITY SYSTEM V3 (Stripe / Linear / Vercel Architecture)
-   ========================================================================== */
+// Configuração de Conexão Segura com o Supabase
+const SUPABASE_URL = 'https://seu-projeto.supabase.co';
+const SUPABASE_ANON_KEY = 'sua-chave-anon-publica';
 
-:root {
-    --bg-main: #050B1C;
-    --bg-gradient: radial-gradient(120% 120% at 50% 0%, #0a122c 0%, #050B1C 100%);
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+document.getElementById('leadForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
     
-    --brand-blue: #00BFFF;
-    --brand-purple: #7C3AED;
+    const btnSubmit = document.getElementById('btnSubmit');
+    const feedback = document.getElementById('formFeedback');
     
-    --text-pure: #FFFFFF;
-    --text-main: #F3F4F6;
-    --text-muted: #9CA3AF;
-    --text-dark: #111827;
+    // UI Loading State (Trava duplo clique)
+    btnSubmit.disabled = true;
+    btnSubmit.innerText = 'Verificando credenciais de exclusividade...';
     
-    --border-subtle: rgba(255, 255, 255, 0.07);
-    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-    --transition-premium: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* Reset Avançado */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html {
-    scroll-behavior: smooth;
-    -webkit-font-smoothing: antialiased;
-}
-
-body {
-    background: var(--bg-main);
-    background: var(--bg-gradient);
-    color: var(--text-main);
-    font-family: var(--font-sans);
-    overflow-x: hidden;
-    line-height: 1.6;
-}
-
-.container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 32px;
-}
-
-/* Header Configurado para Logos Grandes com Espaço Transparente */
-.main-header {
-    padding: 16px 0; /* Reduzido padding para compensar a altura da logo */
-    border-bottom: 1px solid var(--border-subtle);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(5, 11, 28, 0.85);
-}
-
-.header-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 90px; /* Garante tamanho de linha estável */
-}
-
-/* Força bruta na logo para ignorar travas e preencher o topo */
-.brand-logo {
-    height: 110px !important; 
-    width: auto !important;
-    object-fit: contain;
-    display: block;
-    filter: drop-shadow(0px 0px 10px rgba(0, 191, 255, 0.25));
-    transition: var(--transition-premium);
-}
-
-.brand-logo:hover {
-    transform: scale(1.02);
-    filter: drop-shadow(0px 0px 15px rgba(0, 191, 255, 0.45));
-}
-
-.badge-dev {
-    background: rgba(0, 191, 255, 0.08);
-    border: 1px solid rgba(0, 191, 255, 0.25);
-    color: var(--brand-blue);
-    padding: 6px 14px;
-    border-radius: 99px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-}
-
-/* Hero Section */
-.hero-section {
-    padding: 120px 0 80px 0;
-    position: relative;
-}
-
-.hero-section::before {
-    content: '';
-    position: absolute;
-    top: -15%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 900px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(0, 191, 255, 0.06) 0%, rgba(124, 58, 237, 0.03) 50%, transparent 80%);
-    z-index: 0;
-    pointer-events: none;
-}
-
-.hero-grid {
-    display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
-    gap: 64px;
-    align-items: center;
-    position: relative;
-    z-index: 1;
-}
-
-.hero-title {
-    font-size: 3.75rem;
-    font-weight: 700;
-    line-height: 1.15;
-    letter-spacing: -0.03em;
-    color: var(--text-pure);
-    margin-bottom: 24px;
-}
-
-.hero-title span {
-    background: linear-gradient(90deg, var(--brand-blue) 0%, var(--brand-purple) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    display: inline-block;
-}
-
-.hero-subtitle {
-    font-size: 1.25rem;
-    color: var(--text-muted);
-    margin-bottom: 40px;
-    max-width: 520px;
-}
-
-.hero-cta-group {
-    display: flex;
-    gap: 16px;
-}
-
-/* Botões Customizados */
-.btn {
-    font-family: var(--font-sans);
-    font-size: 0.95rem;
-    font-weight: 600;
-    padding: 14px 28px;
-    border-radius: 8px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: var(--transition-premium);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.btn-primary {
-    background: var(--text-pure);
-    color: var(--text-dark);
-    border: 1px solid var(--text-pure);
-}
-
-.btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 15px 30px rgba(255, 255, 255, 0.1);
-}
-
-.btn-secondary {
-    background: rgba(255, 255, 255, 0.02);
-    color: var(--text-pure);
-    border: 1px solid var(--border-subtle);
-}
-
-.btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.15);
-    transform: translateY(-2px);
-}
-
-/* Mockup UI de Engenharia Estrita (Glassmorphism de Alta Densidade) */
-.hero-mockup-container {
-    position: relative;
-    height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: var(--transition-premium);
-}
-
-.glass-card {
-    background: rgba(255, 255, 255, 0.01);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid var(--border-subtle);
-    border-radius: 20px;
-    padding: 24px;
-    box-shadow: 0 40px 80px -15px rgba(0, 0, 0, 0.6);
-}
-
-.mockup-profile {
-    width: 310px;
-    position: absolute;
-    top: 20px;
-    left: -20px;
-    z-index: 2;
-}
-
-.profile-header {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin-bottom: 20px;
-}
-
-.avatar-placeholder {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--brand-purple) 0%, var(--brand-blue) 100%);
-}
-
-.profile-header h4 {
-    font-size: 1rem;
-    color: var(--text-pure);
-    font-weight: 600;
-}
-
-.profile-header p {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-}
-
-.badge-verified {
-    margin-left: auto;
-    font-size: 0.7rem;
-    font-weight: 600;
-    background: rgba(0, 191, 255, 0.08);
-    color: var(--brand-blue);
-    padding: 4px 10px;
-    border-radius: 6px;
-    border: 1px solid rgba(0, 191, 255, 0.15);
-}
-
-.profile-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    border-top: 1px solid var(--border-subtle);
-    padding-top: 16px;
-}
-
-.stat span {
-    display: block;
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    margin-bottom: 2px;
-}
-
-.stat strong {
-    font-size: 1.1rem;
-    color: var(--text-pure);
-}
-
-.mockup-chart {
-    width: 250px;
-    position: absolute;
-    bottom: 30px;
-    right: -10px;
-    z-index: 3;
-}
-
-.chart-title {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-}
-
-.dummy-graph {
-    height: 70px;
-    margin-top: 16px;
-    background: linear-gradient(180deg, rgba(0, 191, 255, 0.15) 0%, transparent 100%);
-    clip-path: polygon(0 100%, 15% 65%, 35% 80%, 55% 40%, 75% 55%, 100% 20%, 100% 100%);
-    border-bottom: 2px solid var(--brand-blue);
-}
-
-/* Seção de Pilares */
-.features-section {
-    padding: 100px 0;
-    border-top: 1px solid var(--border-subtle);
-}
-
-.section-intro {
-    text-align: center;
-    margin-bottom: 60px;
-}
-
-.section-intro h2 {
-    font-size: 2.25rem;
-    color: var(--text-pure);
-    margin-bottom: 12px;
-}
-
-.section-intro p {
-    color: var(--text-muted);
-    font-size: 1.1rem;
-}
-
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
-}
-
-.feature-card {
-    background: rgba(255, 255, 255, 0.01);
-    border: 1px solid var(--border-subtle);
-    padding: 32px;
-    border-radius: 12px;
-    transition: var(--transition-premium);
-}
-
-.feature-card:hover {
-    border-color: rgba(0, 191, 255, 0.2);
-    transform: translateY(-4px);
-}
-
-.icon-box {
-    font-size: 1.75rem;
-    margin-bottom: 20px;
-}
-
-.feature-card h3 {
-    font-size: 1.25rem;
-    color: var(--text-pure);
-    margin-bottom: 12px;
-}
-
-.feature-card p {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-}
-
-/* Seção do Formulário */
-.form-section {
-    padding: 100px 0;
-    border-top: 1px solid var(--border-subtle);
-    background: linear-gradient(180deg, transparent 0%, rgba(124, 58, 237, 0.01) 100%);
-}
-
-.form-wrapper {
-    max-width: 600px !important;
-}
-
-.section-header {
-    text-align: center;
-    margin-bottom: 48px;
-}
-
-.section-header h2 {
-    font-size: 2.25rem;
-    color: var(--text-pure);
-    margin-bottom: 12px;
-}
-
-.section-header p {
-    color: var(--text-muted);
-}
-
-.solyx-form {
-    background: rgba(255, 255, 255, 0.01);
-    border: 1px solid var(--border-subtle);
-    padding: 40px;
-    border-radius: 16px;
-}
-
-.input-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 24px;
-}
-
-.input-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-
-label {
-    font-size: 0.85rem;
-    color: var(--text-main);
-    font-weight: 500;
-}
-
-input {
-    background: rgba(0, 0, 0, 0.2);
-    border: 1px solid var(--border-subtle);
-    padding: 14px;
-    border-radius: 8px;
-    color: var(--text-pure);
-    font-family: var(--font-sans);
-    font-size: 1rem;
-    transition: var(--transition-premium);
-}
-
-input:focus {
-    outline: none;
-    border-color: var(--brand-blue);
-    background: rgba(0, 0, 0, 0.3);
-    box-shadow: 0 0 0 3px rgba(0, 191, 255, 0.1);
-}
-
-.btn-submit {
-    width: 100%;
-    background: linear-gradient(90deg, var(--brand-blue) 0%, var(--brand-purple) 100%);
-    color: var(--text-pure);
-    border: none;
-    font-weight: 600;
-    padding: 16px;
-}
-
-.btn-submit:hover {
-    transform: translateY(-2px);
-    filter: brightness(1.1);
-    box-shadow: 0 10px 25px rgba(124, 58, 237, 0.25);
-}
-
-.hidden { display: none; }
-
-.form-feedback {
-    margin-top: 16px;
-    text-align: center;
-    padding: 12px;
-    border-radius: 8px;
-    font-size: 0.9rem;
-}
-
-.form-feedback.success {
-    background: rgba(0, 255, 128, 0.08);
-    color: #00FF80;
-    border: 1px solid rgba(0, 255, 128, 0.15);
-}
-
-/* Footer */
-.main-footer {
-    padding: 40px 0;
-    border-top: 1px solid var(--border-subtle);
-    text-align: center;
-}
-
-.footer-content p {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-}
-
-.footer-sub {
-    font-size: 0.8rem !important;
-    margin-top: 4px;
-    opacity: 0.5;
-}
-
-/* ==========================================================================
-   RESPONSIVIDADE INTELIGENTE (Mockup em escala transform e logo adaptada)
-   ========================================================================== */
-@media (max-width: 1024px) {
-    .hero-grid {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 48px;
+    const nome = document.getElementById('nome').value.trim();
+    const whatsapp = document.getElementById('whatsapp').value.trim();
+    const cidade = document.getElementById('cidade').value.trim();
+    const profissao = document.getElementById('profissao').value.trim();
+
+    try {
+        // Envio direto para o banco de dados
+        const { data, error } = await supabase
+            .from('PROFISSIONAIS')
+            .insert([
+                { 
+                    nome: nome, 
+                    telefone: whatsapp, 
+                    cidade: cidade, 
+                    categoria: profissao
+                }
+            ]);
+
+        if (error) throw error;
+
+        // Feedback Premium de Sucesso
+        feedback.classList.remove('hidden', 'error');
+        feedback.classList.add('success');
+        feedback.innerHTML = '✓ <strong>Solicitação enviada com sucesso!</strong><br>Sua candidatura foi registrada na lista de espera prioritária da fase beta controlada.';
+        
+        document.getElementById('leadForm').reset();
+        btnSubmit.innerText = 'Solicitação Registrada';
+        
+    } catch (error) {
+        console.error('Erro de Processamento Supabase:', error.message);
+        feedback.classList.remove('hidden', 'success');
+        feedback.classList.add('error');
+        feedback.style.background = 'rgba(255, 77, 77, 0.1)';
+        feedback.style.color = '#FF4D4D';
+        feedback.style.border = '1px solid rgba(255, 77, 77, 0.2)';
+        feedback.innerText = 'Ocorreu um erro técnico na conexão. Por favor, revise seus dados ou tente novamente.';
+        
+        btnSubmit.disabled = false;
+        btnSubmit.innerText = 'Solicitar Acesso à Lista Premium';
     }
-    .hero-title { font-size: 3rem; }
-    .hero-subtitle { margin: 0 auto 32px auto; }
-    .hero-cta-group { justify-content: center; }
-    .features-grid { grid-template-columns: 1fr; gap: 20px; }
-    
-    .hero-mockup-container {
-        transform: scale(0.85);
-        height: 340px;
-        max-width: 450px;
-        margin: 0 auto;
-    }
-    .mockup-profile { left: 0; }
-    .mockup-chart { right: 0; }
-}
-
-@media (max-width: 640px) {
-    .header-wrapper { height: 70px; }
-    .brand-logo { height: 85px !important; } /* Reduz dinamicamente no mobile */
-    .hero-title { font-size: 2.35rem; }
-    .hero-cta-group { flex-direction: column; width: 100%; }
-    .btn { width: 100%; }
-    .hero-mockup-container { transform: scale(0.75); height: 280px; }
-    .input-row { grid-template-columns: 1fr; gap: 0; }
-    .solyx-form { padding: 24px; }
-}
+});
