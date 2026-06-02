@@ -3,101 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solyx | O futuro dos serviços presenciais começa com confiança</title>
+    <title>Solyx | A camada de confiança para serviços presenciais</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Font Inter para o visual Premium/Linear -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- Header / Navbar -->
+    <!-- NAVBAR -->
     <header class="main-header">
         <div class="container header-wrapper">
-            <img src="assets/logo.png" alt="Solyx Logo" class="brand-logo">
-            <span class="badge-dev">EM DESENVOLVIMENTO</span>
+            <img src="assets/logo.png" alt="Solyx" class="brand-logo">
+            <div class="nav-badges">
+                <span class="badge-dev">Fase Beta Coberta</span>
+            </div>
         </div>
     </header>
 
     <main>
-        <!-- Hero Section -->
+        <!-- HERO SECTION -->
         <section class="hero-section">
             <div class="container hero-grid">
                 <div class="hero-content">
                     <h1 class="hero-title">O futuro dos serviços presenciais começa com <span>confiança.</span></h1>
                     <p class="hero-subtitle">Estamos construindo uma nova forma de conectar clientes e profissionais através de tecnologia, transparência e segurança.</p>
                     <div class="hero-cta-group">
-                        <a href="#cadastro-profissional" class="btn btn-primary">🚀 Sou Profissional</a>
-                        <a href="#cadastro-cliente" class="btn btn-secondary">🔍 Quero Contratar</a>
+                        <a href="#captacao" class="btn btn-primary">🚀 Solicitar Participação</a>
+                        <a href="#como-funciona" class="btn btn-secondary">🔍 Como Funciona</a>
                     </div>
                 </div>
                 
-                <!-- Mockup Interativo (Stripe Style) -->
+                <!-- MOCKUP DE PRODUTO PREMIUM (Sem nomes fakes, puro foco em dados e credibilidade) -->
                 <div class="hero-mockup-container">
                     <div class="glass-card mockup-profile">
                         <div class="profile-header">
                             <div class="avatar-placeholder"></div>
                             <div>
-                                <h4>Carlos Silva</h4>
-                                <p>Eletricista Residencial</p>
+                                <h4>Profissional Verificado</h4>
+                                <p>Infraestrutura e Manutenção</p>
                             </div>
-                            <span class="badge-verified">✓ Verificado</span>
+                            <span class="badge-verified">✓ Solyx Pro</span>
                         </div>
                         <div class="profile-stats">
-                            <div class="stat"><span>Avaliação</span><strong>4.9 ★</strong></div>
-                            <div class="stat"><span>Projetos</span><strong>+140</strong></div>
+                            <div class="stat"><span>Reputação Geral</span><strong>4.9 ★</strong></div>
+                            <div class="stat"><span>Atendimentos</span><strong>+140</strong></div>
                         </div>
                     </div>
                     <div class="glass-card mockup-chart">
-                        <p class="chart-title">Ganhos na plataforma</p>
+                        <p class="chart-title">Consistência de Agendamentos</p>
                         <div class="dummy-graph"></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Formulário de Captura Segmentado -->
-        <section id="cadastro-profissional" class="form-section">
+        <!-- SEÇÃO OS TRÊS PILARES -->
+        <section class="features-section" id="como-funciona">
+            <div class="container">
+                <div class="section-intro">
+                    <h2>Não somos um classificados. Somos um ecossistema.</h2>
+                    <p>Desenhado para destacar quem trabalha com excelência e proteger quem contrata.</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="icon-box">🛡️</div>
+                        <h3>Validação de Identidade</h3>
+                        <p>Checagem rigorosa de antecedentes e histórico profissional para segurança de todos.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon-box">📊</div>
+                        <h3>Reputação Imutável</h3>
+                        <p>Avaliações auditadas por tecnologia, impedindo perfis fakes e notas manipuladas.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon-box">✨</div>
+                        <h3>Posicionamento Premium</h3>
+                        <p>Sua marca pessoal apresentada com o design e a sofisticação que seu trabalho merece.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FORMULÁRIO DE CAPTURA COM GATILHO DE EXCLUSIVIDADE -->
+        <section class="form-section" id="captacao">
             <div class="container form-wrapper">
                 <div class="section-header">
-                    <h2>Faça parte do ecossistema pioneiro</h2>
-                    <p>Seja um dos primeiros profissionais selecionados para a Solyx na sua região.</p>
+                    <h2>Solicite sua entrada no ecossistema pioneiro</h2>
+                    <p>Seja um dos primeiros profissionais validados na sua região e garanta posicionamento de destaque no lançamento.</p>
                 </div>
                 
                 <form id="leadForm" class="solyx-form">
                     <div class="input-group">
                         <label for="nome">Nome Completo</label>
-                        <input type="text" id="nome" required placeholder="Ex: Roberto Alves">
+                        <input type="text" id="nome" required placeholder="Ex: Carlos Silva">
                     </div>
                     <div class="input-row">
                         <div class="input-group">
-                            <label for="whatsapp">WhatsApp</label>
+                            <label for="whatsapp">WhatsApp (com DDD)</label>
                             <input type="tel" id="whatsapp" required placeholder="(11) 99999-9999">
                         </div>
                         <div class="input-group">
                             <label for="cidade">Cidade / UF</label>
-                            <input type="text" id="cidade" required placeholder="São Paulo - SP">
+                            <input type="text" id="cidade" required placeholder="Ex: Campinas - SP">
                         </div>
                     </div>
                     <div class="input-group">
                         <label for="profissao">Sua Profissão / Especialidade</label>
-                        <input type="text" id="profissao" required placeholder="Ex: Encanador, Personal Trainer...">
+                        <input type="text" id="profissao" required placeholder="Ex: Eletricista, Manicure, Personal Trainer...">
                     </div>
-                    <button type="submit" class="btn btn-submit" id="btnSubmit">Garantir Minha Vaga na Lista</button>
+                    <button type="submit" class="btn btn-submit" id="btnSubmit">Solicitar Acesso à Lista Premium</button>
                     <div id="formFeedback" class="form-feedback hidden"></div>
                 </form>
             </div>
         </section>
     </main>
 
+    <!-- FOOTER -->
     <footer class="main-footer">
-        <div class="container">
-            <p>&copy; 2026 Solyx. Tecnologia para um trabalho mais seguro.</p>
+        <div class="container footer-content">
+            <p>&copy; 2026 Solyx. Tecnologia de ponta para conexões de alta confiança.</p>
+            <p class="footer-sub">Feito com orgulho no Brasil.</p>
         </div>
     </footer>
 
-    <!-- Supabase CDN (Para o estágio atual sem Bundlers) -->
+    <!-- Supabase Core CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="script.js"></script>
 </body>
