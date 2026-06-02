@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SOLYX CORPORATE IDENTITY SYSTEM V8 (Clean Asset & Natural Flow Grid)
+   SOLYX CORPORATE IDENTITY SYSTEM V9 (Clean Native Flow Architecture)
    ========================================================================== */
 
 :root {
@@ -48,17 +48,17 @@ body {
 }
 
 /* ==========================================================================
-   HEADER & LOGO REBUILT (Fluxo Sem Restrições por Gambiarras)
+   HEADER & NATIVE SVG LOGO (Alinhamento Perfeito e Tamanho Imponente)
    ========================================================================== */
 .main-header {
-    padding: 24px 0 !important;
+    padding: 24px 0 !important; /* Respiro vertical premium */
     border-bottom: 1px solid var(--border-subtle);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(5, 11, 28, 0.9) !important;
+    background: rgba(5, 11, 28, 0.85) !important;
 }
 
 .header-wrapper {
@@ -68,24 +68,24 @@ body {
 }
 
 .brand-logo-link {
-    display: flex !important;
+    display: inline-flex !important;
     align-items: center !important;
     text-decoration: none !important;
+    margin-left: -4px; /* Ajuste fino para cravar no alinhamento esquerdo do título */
 }
 
-/* Tamanho ideal nativo. Altera apenas o height para controlar o tamanho geral */
-.brand-logo {
-    height: 44px !important; 
+/* Controle milimétrico do tamanho e impacto visual da logo */
+.brand-logo-svg {
+    height: 44px !important; /* Aumentado para dar destaque real de startup financiada */
     width: auto !important;
     display: block !important;
-    object-fit: contain !important;
-    filter: drop-shadow(0px 0px 8px rgba(0, 191, 255, 0.35)) !important;
+    filter: drop-shadow(0px 4px 12px rgba(0, 191, 255, 0.15)) !important;
     transition: var(--transition-premium);
 }
 
-.brand-logo:hover {
+.brand-logo-svg:hover {
     transform: scale(1.02);
-    filter: drop-shadow(0px 0px 14px rgba(0, 191, 255, 0.55)) !important;
+    filter: drop-shadow(0px 4px 16px rgba(0, 191, 255, 0.35)) !important;
 }
 
 .badge-dev {
@@ -194,7 +194,7 @@ body {
     transform: translateY(-2px);
 }
 
-/* Mockup UI de Engenharia Estrita (Glassmorphism de Alta Densidade) */
+/* Mockup UI (Glassmorphism) */
 .hero-mockup-container {
     position: relative;
     height: 400px;
@@ -360,4 +360,151 @@ body {
 .form-section {
     padding: 100px 0;
     border-top: 1px solid var(--border-subtle);
-    background: linear-
+    background: linear-gradient(180deg, transparent 0%, rgba(124, 58, 237, 0.01) 100%);
+}
+
+.form-wrapper {
+    max-width: 600px !important;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.section-header h2 {
+    font-size: 2.25rem;
+    color: var(--text-pure);
+    margin-bottom: 12px;
+}
+
+.section-header p {
+    color: var(--text-muted);
+}
+
+.solyx-form {
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid var(--border-subtle);
+    padding: 40px;
+    border-radius: 16px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.input-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+label {
+    font-size: 0.85rem;
+    color: var(--text-main);
+    font-weight: 500;
+}
+
+input {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border-subtle);
+    padding: 14px;
+    border-radius: 8px;
+    color: var(--text-pure);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    transition: var(--transition-premium);
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--brand-blue);
+    background: rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 0 3px rgba(0, 191, 255, 0.1);
+}
+
+.btn-submit {
+    width: 100%;
+    background: linear-gradient(90deg, var(--brand-blue) 0%, var(--brand-purple) 100%);
+    color: var(--text-pure);
+    border: none;
+    font-weight: 600;
+    padding: 16px;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+    box-shadow: 0 10px 25px rgba(124, 58, 237, 0.25);
+}
+
+.hidden { display: none; }
+
+.form-feedback {
+    margin-top: 16px;
+    text-align: center;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+
+.form-feedback.success {
+    background: rgba(0, 255, 128, 0.08);
+    color: #00FF80;
+    border: 1px solid rgba(0, 255, 128, 0.15);
+}
+
+/* Footer */
+.main-footer {
+    padding: 40px 0;
+    border-top: 1px solid var(--border-subtle);
+    text-align: center;
+}
+
+.footer-content p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.footer-sub {
+    font-size: 0.8rem !important;
+    margin-top: 4px;
+    opacity: 0.5;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE INTELIGENTE
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 48px;
+    }
+    .hero-title { font-size: 3rem; }
+    .hero-subtitle { margin: 0 auto 32px auto; }
+    .hero-cta-group { justify-content: center; }
+    .features-grid { grid-template-columns: 1fr; gap: 20px; }
+    
+    .hero-mockup-container {
+        transform: scale(0.85);
+        height: 340px;
+        max-width: 450px;
+        margin: 0 auto;
+    }
+    .mockup-profile { left: 0; }
+    .mockup-chart { right: 0; }
+}
+
+@media (max-width: 640px) {
+    .brand-logo-svg { height: 34px !important; }
+    .hero-title { font-size: 2.35rem; }
+    .hero-cta-group { flex-direction: column; width: 100%; }
+    .btn { width: 100%; }
+    .hero-mockup-container { transform: scale(0.75); height: 280px; }
+    .input-row { grid-template-columns: 1fr; gap: 0; }
+    .solyx-form { padding: 24px; }
+}
