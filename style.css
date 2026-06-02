@@ -48,7 +48,7 @@ body {
 }
 
 /* ==========================================================================
-   HEADER & LOGO FORCE FIX (Técnica de Expansão de Escala de Imagem)
+   HEADER & LOGO - REFINAMENTO DE ALINHAMENTO FINO (style.css)
    ========================================================================== */
 .main-header {
     padding: 12px 0 !important;
@@ -65,29 +65,53 @@ body {
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
-    height: 60px !important; /* Altura controlada pro menu ficar limpo */
+    height: 60px !important;
 }
 
-/* Área isolada para permitir que a logo cresça sem empurrar o layout */
+/* Container ajustado para não cortar as bordas do símbolo */
 .logo-area {
     display: flex !important;
     align-items: center !important;
-    width: 160px !important;
+    width: 200px !important; /* Aumentado ligeiramente para dar margem interna ao asset */
     height: 50px !important;
     position: relative !important;
 }
 
 .brand-logo {
     position: absolute !important;
-    left: -30px !important; /* Move a logo levemente para compensar o vazio esquerdo */
-    width: 320px !important; /* Multiplicamos o tamanho real dela */
+    left: -12px !important; /* Ajustado de -30px para -12px: afasta da borda e alinha com o texto */
+    width: 320px !important; 
     max-width: none !important;
     height: auto !important;
     display: block !important;
-    transform: scale(1.6) !important; /* Força o desenho central a esticar de dentro para fora */
+    transform: scale(1.6) !important; 
     transform-origin: left center !important;
     filter: drop-shadow(0px 0px 8px rgba(0, 191, 255, 0.35)) !important;
     transition: var(--transition-premium);
+}
+
+.brand-logo:hover {
+    transform: scale(1.63) !important;
+    filter: drop-shadow(0px 0px 14px rgba(0, 191, 255, 0.55)) !important;
+}
+
+.badge-dev {
+    background: rgba(0, 191, 255, 0.08);
+    border: 1px solid rgba(0, 191, 255, 0.25);
+    color: var(--brand-blue);
+    padding: 6px 14px;
+    border-radius: 99px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+/* Responsividade da Logo no Mobile */
+@media (max-width: 640px) {
+    .logo-area { transform: scale(0.75) !important; width: 130px !important; }
+    .brand-logo { left: -5px !important; } /* Ajuste fino para telas pequenas */
+}
 }
 
 .brand-logo:hover {
