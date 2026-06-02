@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SOLYX CORPORATE IDENTITY SYSTEM V5 (Forced Dimensions Anti-Cache)
+   SOLYX CORPORATE IDENTITY SYSTEM V6 (Anti-Vazio Transparente)
    ========================================================================== */
 
 :root {
@@ -48,10 +48,10 @@ body {
 }
 
 /* ==========================================================================
-   HEADER & LOGO REBUILT (Solução Definitiva Anti-Esmagamento)
+   HEADER & LOGO FORCE FIX (Técnica de Expansão de Escala de Imagem)
    ========================================================================== */
 .main-header {
-    padding: 16px 0 !important; /* Reduz o espaço interno para focar na logo */
+    padding: 12px 0 !important;
     border-bottom: 1px solid var(--border-subtle);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -65,27 +65,34 @@ body {
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
+    height: 60px !important; /* Altura controlada pro menu ficar limpo */
 }
 
-/* Container rígido para forçar a renderização em tamanho real */
-.logo-container {
-    display: block !important;
-    width: 240px !important; /* Força uma largura horizontal imponente na LP */
-    min-width: 240px !important;
+/* Área isolada para permitir que a logo cresça sem empurrar o layout */
+.logo-area {
+    display: flex !important;
+    align-items: center !important;
+    width: 160px !important;
+    height: 50px !important;
+    position: relative !important;
 }
 
 .brand-logo {
-    width: 100% !important;
+    position: absolute !important;
+    left: -30px !important; /* Move a logo levemente para compensar o vazio esquerdo */
+    width: 320px !important; /* Multiplicamos o tamanho real dela */
+    max-width: none !important;
     height: auto !important;
     display: block !important;
-    object-fit: contain !important;
-    filter: drop-shadow(0px 0px 10px rgba(0, 191, 255, 0.35)) !important;
+    transform: scale(1.6) !important; /* Força o desenho central a esticar de dentro para fora */
+    transform-origin: left center !important;
+    filter: drop-shadow(0px 0px 8px rgba(0, 191, 255, 0.35)) !important;
     transition: var(--transition-premium);
 }
 
 .brand-logo:hover {
-    transform: scale(1.02);
-    filter: drop-shadow(0px 0px 15px rgba(0, 191, 255, 0.55)) !important;
+    transform: scale(1.65) !important;
+    filter: drop-shadow(0px 0px 14px rgba(0, 191, 255, 0.55)) !important;
 }
 
 .badge-dev {
@@ -500,7 +507,7 @@ input:focus {
 }
 
 @media (max-width: 640px) {
-    .logo-container { width: 170px !important; min-width: 170px !important; } /* Escala موبائل */
+    .logo-area { transform: scale(0.7) !important; width: 110px !important; }
     .hero-title { font-size: 2.35rem; }
     .hero-cta-group { flex-direction: column; width: 100%; }
     .btn { width: 100%; }
