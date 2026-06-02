@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SOLYX CORPORATE IDENTITY SYSTEM V2 (Stripe / Linear / Vercel Architecture)
+   SOLYX CORPORATE IDENTITY SYSTEM V3 (Stripe / Linear / Vercel Architecture)
    ========================================================================== */
 
 :root {
@@ -47,41 +47,38 @@ body {
     padding: 0 32px;
 }
 
-/* Header Ajustado para Destacar a Logo */
+/* Header Configurado para Logos Grandes com Espaço Transparente */
 .main-header {
-    padding: 24px 0;
+    padding: 16px 0; /* Reduzido padding para compensar a altura da logo */
     border-bottom: 1px solid var(--border-subtle);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(5, 11, 28, 0.7);
+    background: rgba(5, 11, 28, 0.85);
 }
 
 .header-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 90px; /* Garante tamanho de linha estável */
 }
 
-.logo-link {
-    display: inline-flex;
-    align-items: center;
-    text-decoration: none;
-}
-
+/* Força bruta na logo para ignorar travas e preencher o topo */
 .brand-logo {
-    height: 52px; /* Tamanho corrigido com base no print image_3a2604.jpg */
-    width: auto;
+    height: 110px !important; 
+    width: auto !important;
     object-fit: contain;
-    filter: drop-shadow(0px 0px 8px rgba(0, 191, 255, 0.2));
+    display: block;
+    filter: drop-shadow(0px 0px 10px rgba(0, 191, 255, 0.25));
     transition: var(--transition-premium);
 }
 
 .brand-logo:hover {
     transform: scale(1.02);
-    filter: drop-shadow(0px 0px 12px rgba(0, 191, 255, 0.4));
+    filter: drop-shadow(0px 0px 15px rgba(0, 191, 255, 0.45));
 }
 
 .badge-dev {
@@ -472,7 +469,7 @@ input:focus {
 }
 
 /* ==========================================================================
-   RESPONSIVIDADE INTELIGENTE (Não esconde o mockup, reduz com transform: scale)
+   RESPONSIVIDADE INTELIGENTE (Mockup em escala transform e logo adaptada)
    ========================================================================== */
 @media (max-width: 1024px) {
     .hero-grid {
@@ -496,11 +493,12 @@ input:focus {
 }
 
 @media (max-width: 640px) {
+    .header-wrapper { height: 70px; }
+    .brand-logo { height: 85px !important; } /* Reduz dinamicamente no mobile */
     .hero-title { font-size: 2.35rem; }
     .hero-cta-group { flex-direction: column; width: 100%; }
     .btn { width: 100%; }
     .hero-mockup-container { transform: scale(0.75); height: 280px; }
     .input-row { grid-template-columns: 1fr; gap: 0; }
     .solyx-form { padding: 24px; }
-    .brand-logo { height: 42px; } /* Ajuste fino para telas pequenas */
 }
