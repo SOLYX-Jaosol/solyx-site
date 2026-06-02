@@ -34,3 +34,94 @@
                 
                 <div class="hero-mockup-container">
                     <div class="glass-card mockup-profile">
+                        <div class="profile-header">
+                            <div class="avatar-placeholder"></div>
+                            <div>
+                                <h4>Profissional Verificado</h4>
+                                <p>Infraestrutura e Manutenção</p>
+                            </div>
+                            <span class="badge-verified">✓ Solyx Pro</span>
+                        </div>
+                        <div class="profile-stats">
+                            <div class="stat"><span>Reputação Geral</span><strong>4.9 ★</strong></div>
+                            <div class="stat"><span>Atendimentos</span><strong>+140</strong></div>
+                        </div>
+                    </div>
+                    <div class="glass-card mockup-chart">
+                        <p class="chart-title">Consistência de Agendamentos</p>
+                        <div class="dummy-graph"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features-section" id="como-funciona">
+            <div class="container">
+                <div class="section-intro">
+                    <h2>Não somos um classificados. Somos um ecossistema.</h2>
+                    <p>Desenhado para destacar quem trabalha com excelência e proteger quem contrata.</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="icon-box">🛡️</div>
+                        <h3>Validação de Identidade</h3>
+                        <p>Checagem rigorosa de antecedentes e histórico profissional para segurança de todos.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon-box">📊</div>
+                        <h3>Reputação Imutável</h3>
+                        <p>Avaliações auditadas por tecnologia, impedindo perfis fakes e notas manipuladas.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon-box">✨</div>
+                        <h3>Posicionamento Premium</h3>
+                        <p>Sua marca pessoal apresentada com o design e a sofisticação que seu trabalho merece.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="form-section" id="captacao">
+            <div class="container form-wrapper">
+                <div class="section-header">
+                    <h2>Solicite sua entrada no ecossistema pioneiro</h2>
+                    <p>Seja um dos primeiros profissionais validados na sua região e garanta posicionamento de destaque no lançamento.</p>
+                </div>
+                
+                <form id="leadForm" class="solyx-form">
+                    <div class="input-group">
+                        <label for="nome">Nome Completo</label>
+                        <input type="text" id="nome" required placeholder="Ex: Carlos Silva">
+                    </div>
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="whatsapp">WhatsApp (com DDD)</label>
+                            <input type="tel" id="whatsapp" required placeholder="(11) 99999-9999">
+                        </div>
+                        <div class="input-group">
+                            <label for="cidade">Cidade / UF</label>
+                            <input type="text" id="cidade" required placeholder="Ex: Campinas - SP">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="profissao">Sua Profissão / Especialidade</label>
+                        <input type="text" id="profissao" required placeholder="Ex: Eletricista, Manicure, Personal Trainer...">
+                    </div>
+                    <button type="submit" class="btn btn-submit" id="btnSubmit">Solicitar Acesso à Lista Premium</button>
+                    <div id="formFeedback" class="form-feedback hidden"></div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <p>&copy; 2026 Solyx. Tecnologia de ponta para conexões de alta confiança.</p>
+            <p class="footer-sub">Feito com orgulho no Brasil.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="script.js"></script>
+</body>
+</html>
